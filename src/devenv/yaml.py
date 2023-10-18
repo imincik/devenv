@@ -12,6 +12,7 @@ inputsSchema = EmptyDict() | MapPattern(
     Map(
         {
             "url": Str(),
+            "follows": Str(),
             Optional("flake", default=None): Bool(),
             Optional("inputs", default=None): Any(),
             Optional("overlays", default=None): Seq(Str()),
