@@ -12,7 +12,7 @@ inputsSchema = EmptyDict() | MapPattern(
     Map(
         {
             "url": Str(),
-            "follows": Str(),
+            Optional("follows", default=None): Str(),
             Optional("flake", default=None): Bool(),
             Optional("inputs", default=None): Any(),
             Optional("overlays", default=None): Seq(Str()),
@@ -51,7 +51,7 @@ def validate_and_parse_yaml(dot_devenv_root):
 
     inputs = {}
     for input, attrs in devenv.get("inputs", {}).items():
-        inputs[input] = {k: attrs[k] for k in ("url", "inputs", "flake") if k in attrs}
+        inputs[input] = {k: attrs[k] for k in ("url", "follows", "inputs", "flake") if k in attrs}
 
     with open(os.path.join(dot_devenv_root, "flake.json"), "w") as f:
         f.write(json.dumps(inputs))
