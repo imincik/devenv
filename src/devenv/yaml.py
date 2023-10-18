@@ -11,7 +11,8 @@ inputsSchema = EmptyDict() | MapPattern(
     Str(),
     Map(
         {
-            "url": Str(),
+            # "url": Str(),
+            Optional("url", default=None): Str(),
             Optional("follows", default=None): Str(),
             Optional("flake", default=None): Bool(),
             Optional("inputs", default=None): Any(),
