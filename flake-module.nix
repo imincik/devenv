@@ -44,7 +44,7 @@ devenvFlake: { flake-parts-lib, lib, inputs, ... }: {
           (shellName: devenv:
             (lib.concatMapAttrs
               (containerName: container:
-                { "${shellPrefix shellName}container-${containerName}" = container.derivation; }
+                { "${shellPrefix shellName}container-${containerName}" = container.dockerRun; }
               )
               devenv.containers
             ) // {
